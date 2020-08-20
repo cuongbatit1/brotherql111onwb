@@ -1,7 +1,7 @@
 name: brotherql111onwb
 description: A dart plugin implementing the Brother PDF Print SDK. Print labels from your flutter app
 version: 0.1.0
-homepage: https://github.com/PrimaelQuemerais/brother_label_print_dart
+homepage: https://github.com/cuongbatit1/brotherql111onwb
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
