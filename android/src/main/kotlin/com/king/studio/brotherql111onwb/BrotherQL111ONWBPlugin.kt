@@ -62,8 +62,9 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
       "printFilePdf" -> {
         val nameFile: String = call.argument<String>("file")!!
         val ip: String = call.argument<String>("ip")!!
-        Log.d("printFilePdf", "printFilePdf : $nameFile - $ip")
-        printPdf(ip, nameFile, result)
+        val isOnePage: Boolean = call.argument<Boolean>("isOnePage") ?: false
+        Log.d("printFilePdf", "printFilePdf : $nameFile - $ip - $isOnePage")
+        printPdf(ip, nameFile, isOnePage ,result)
       }
       else -> result.notImplemented()
     }
@@ -73,7 +74,7 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
 
   }
 
-  private fun printPdf(printerIp: String, file: String, @NonNull result: Result) {
+  private fun printPdf(printerIp: String, file: String, isOnePage : Boolean , @NonNull result: Result) {
     uiScope.launch {
       val task = async(bgDispatcher) {
         // background thread
@@ -102,11 +103,16 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
 //          info.savePrnPath = input
 //          info.workPath = sharedPreferences.getString("workPath", "")
           printer.printerInfo = info
-          var countPage = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            printer.getPDFPages(file)
+          var countPage = if (isOnePage) {
+              1
           } else {
-            printer.getPDFFilePages(file)
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+              printer.getPDFPages(file)
+            } else {
+              printer.getPDFFilePages(file)
+            }
           }
+
           Log.d("printFilePdf", "countPage : $countPage")
           for (index in 1 .. countPage) {
             Log.d("printFilePdf", "index : $index")
@@ -142,7 +148,6 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
       } else {
         result.success(resultTask)
       }
-
     }
   }
 

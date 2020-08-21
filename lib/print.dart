@@ -24,7 +24,7 @@ class BrotherQL111ONWBPlugin {
         {"ip": ip, "model": model.index, "data": data});
   }
 
-  static Future<String> printFilePdf(String ip, String file) async {
-    return await _channel.invokeMethod('printFilePdf', {"ip": ip, "file": file});
+  static Future<String> printFilePdf(String ip, String file, bool isOnePage) async {
+    return await _channel.invokeMethod('printFilePdf', {"ip": ip, "file": file, "isOnePage" : isOnePage});
   }
 }
