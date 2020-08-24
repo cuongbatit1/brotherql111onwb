@@ -88,7 +88,7 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
           info.printerModel = PrinterInfo.Model.QL_1110NWB
           info.port = PrinterInfo.Port.NET
           info.localName = PrinterInfo.Model.QL_1110NWB.name
-          info.labelNameIndex = LabelInfo.QL1100.W103.ordinal
+          info.labelNameIndex = LabelInfo.QL1100.W103H164.ordinal
           info.skipStatusCheck = false
           info.isAutoCut = false
           info.isCutAtEnd = false
