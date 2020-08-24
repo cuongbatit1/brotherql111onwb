@@ -63,3 +63,32 @@ enum PrinterModel {
   TD_4520DN,
   TD_4550DNWB
 }
+
+mixin QL1100 {
+  static const String W29H90 = "om_brother-label-29x90mm_29x90mm";
+  static const String W38H90 = "om_brother-label-38x90mm_38x90mm";
+  static const String W62H29 = "om_brother-label-29x62mm_29x62mm";
+  static const String W62H100 = "om_brother-label-62x100mm_62x100mm";
+  static const String W17H54 = "om_brother-label-17x54mm_17x54mm";
+  static const String W17H87 = "om_brother-label-17x87mm_17x87mm";
+  static const String W29H42 = "om_brother-label-29x42mm_29x42mm";
+  static const String W52H29 = "om_brother-label-29x52mm_29x52mm";
+  static const String W23H23 = "om_brother-label-23x23mm_23x23mm";
+  static const String W39H48 = "om_brother-label-39x48mm_39x48mm";
+  static const String W60H86 = "om_brother-label-60x86mm_60x86mm";
+  static const String W103H164 = "om_brother-label-103x164mm_103x164mm";
+  static const String W102H51 = "om_brother-label-51x102mm_51x102mm";
+  static const String W102H152 = "om_brother-label-102x152mm_102x152mm";
+  
+
+  static const String W58 = "om_brother-label-58x58mm_58x58mm";
+  static const String W12 = "om_brother-label-12x12mm_12x12mm";
+  static const String W24 = "om_brother-label-24x24mm_24x24mm";
+
+  static const String W42H62 = "om_brother-label-42x62mm_42x62mm";
+  static const String MIN12 = "roll_min_12x12.7mm";
+  static const String MAX103X1000MM = "roll_max_103x1000mm";
+  static const String CUSTOM_MIN12 = "custom_min_12x12.7mm";
+  static const String CUSTOM_MAX103X1000MM = "custom_max_103x1000mm";
+}
+ 

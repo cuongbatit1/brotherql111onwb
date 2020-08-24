@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
     try {
       bool isOnePage = true;
       result = await BrotherQL111ONWBPlugin.printFilePdf(
-          "192.168.1.104", "/storage/emulated/0/Download/ting.pdf", isOnePage);
+          "192.168.1.104", "/storage/emulated/0/Download/ting.pdf", "om_brother-label-24x24mm_24x24mm", isOnePage);
     } catch (e) {
       result = "An error occured : $e";
     }

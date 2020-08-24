@@ -63,8 +63,9 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
         val nameFile: String = call.argument<String>("file")!!
         val ip: String = call.argument<String>("ip")!!
         val isOnePage: Boolean = call.argument<Boolean>("isOnePage") ?: false
+        val label: String? = call.argument<String>("label")
         Log.d("printFilePdf", "printFilePdf : $nameFile - $ip - $isOnePage")
-        printPdf(ip, nameFile, isOnePage ,result)
+        printPdf(ip, nameFile, label, isOnePage, result)
       }
       else -> result.notImplemented()
     }
@@ -74,7 +75,7 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
 
   }
 
-  private fun printPdf(printerIp: String, file: String, isOnePage : Boolean , @NonNull result: Result) {
+  private fun printPdf(printerIp: String, file: String, labelPrint: String?, isOnePage : Boolean , @NonNull result: Result) {
     uiScope.launch {
       val task = async(bgDispatcher) {
         // background thread
@@ -88,7 +89,41 @@ public class BrotherQL111ONWBPlugin: FlutterPlugin, MethodCallHandler {
           info.printerModel = PrinterInfo.Model.QL_1110NWB
           info.port = PrinterInfo.Port.NET
           info.localName = PrinterInfo.Model.QL_1110NWB.name
-          info.labelNameIndex = LabelInfo.QL1100.W103H164.ordinal
+          if (labelPrint == LabelQL1100.W102H152) {
+            info.labelNameIndex = LabelInfo.QL1100.W102H152.ordinal
+          } else if (labelPrint == LabelQL1100.W29H90) {
+            info.labelNameIndex = LabelInfo.QL1100.W29H90.ordinal
+          } else if (labelPrint == LabelQL1100.W38H90) {
+            info.labelNameIndex = LabelInfo.QL1100.W38H90.ordinal
+          } else if (labelPrint == LabelQL1100.W62H29) {
+            info.labelNameIndex = LabelInfo.QL1100.W62H29.ordinal
+          } else if (labelPrint == LabelQL1100.W62H100) {
+            info.labelNameIndex = LabelInfo.QL1100.W62H100.ordinal
+          } else if (labelPrint == LabelQL1100.W17H54) {
+            info.labelNameIndex = LabelInfo.QL1100.W17H54.ordinal
+          } else if (labelPrint == LabelQL1100.W17H87) {
+            info.labelNameIndex = LabelInfo.QL1100.W17H87.ordinal
+          } else if (labelPrint == LabelQL1100.W29H42) {
+            info.labelNameIndex = LabelInfo.QL1100.W29H42.ordinal
+          } else if (labelPrint == LabelQL1100.W52H29) {
+            info.labelNameIndex = LabelInfo.QL1100.W52H29.ordinal
+          } else if (labelPrint == LabelQL1100.W23H23) {
+            info.labelNameIndex = LabelInfo.QL1100.W23H23.ordinal
+          } else if (labelPrint == LabelQL1100.W39H48) {
+            info.labelNameIndex = LabelInfo.QL1100.W39H48.ordinal
+          } else if (labelPrint == LabelQL1100.W60H86) {
+            info.labelNameIndex = LabelInfo.QL1100.W60H86.ordinal
+          } else if (labelPrint == LabelQL1100.W103H164) {
+            info.labelNameIndex = LabelInfo.QL1100.W103H164.ordinal
+          } else if (labelPrint == LabelQL1100.W102H51) {
+            info.labelNameIndex = LabelInfo.QL1100.W102H51.ordinal
+          } else if (labelPrint == LabelQL1100.W12) {
+            info.labelNameIndex = LabelInfo.QL1100.W12.ordinal
+          } else if (labelPrint == LabelQL1100.W24) {
+            info.labelNameIndex = LabelInfo.PT.W24.ordinal
+          } else {
+            info.labelNameIndex = LabelInfo.QL1100.W62.ordinal
+          }
           info.skipStatusCheck = false
           info.isAutoCut = false
           info.isCutAtEnd = false
